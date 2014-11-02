@@ -19,6 +19,7 @@
 * **Scala**:          `git clone https://github.com/derekwyatt/vim-scala.git vim-scala`
 * **Solarized**:      `git clone https://github.com/altercation/vim-colors-solarized.git vim-solarized`
 * **Surround**:       `git clone https://github.com/tpope/vim-surround.git vim-surround`
+* **Syntastic**:      `git clone https://github.com/scrooloose/syntastic.git vim-syntastic`
 * **Tabular**:        `git clone https://github.com/godlygeek/tabular.git vim-tabular`
 * **TwitVim**:        `git clone https://github.com/vim-scripts/TwitVim.git vim-twitvim`
 * **Unimpaired**:     `git clone https://github.com/tpope/vim-unimpaired.git vim-unimpaired`

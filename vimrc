@@ -123,6 +123,8 @@ set history=100
 
 " These commands open folds
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+set foldmethod=syntax
+set foldnestmax=2
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
@@ -796,3 +798,20 @@ if has("gui_running")
   endif
 endif
 :nohls
+
+"-----------------------------------------------------------------------------
+" My stuff
+"-----------------------------------------------------------------------------
+
+" compale .dvi files from .tex in vim with '\ll'
+" view .dvi with '\lv'
+:let g:Tex_CompileRule_dvi = 'latex -src-specials -interaction=nonstopmode $*'
+
+" think I need this to use tags with ruby
+set tags=./tags;
+
+" Syntastic stuff
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_no_include_search = 1
+let g:syntastic_cpp_no_default_include_dirs = 1
+let g:syntastic_cpp_auto_refresh_includes = 1
