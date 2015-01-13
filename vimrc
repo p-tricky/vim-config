@@ -123,8 +123,10 @@ set history=100
 
 " These commands open folds
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+" ploftus edits to folding
 set foldmethod=syntax
 set foldnestmax=2
+set foldlevel=2
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
@@ -815,3 +817,15 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_no_default_include_dirs = 1
 let g:syntastic_cpp_auto_refresh_includes = 1
+
+let g:syntastic_c_remove_include_errors = 1
+
+" printing
+set printoptions+=header:0
+
+set printexpr=PrintFile(v:fname_in)
+function! PrintFile(fname)
+  call system("lp " . a:fname)
+  call delete(a:fname)
+  return v:shell_error
+endfunc
