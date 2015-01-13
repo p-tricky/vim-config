@@ -25,5 +25,5 @@
 * **Unimpaired**:     `git clone https://github.com/tpope/vim-unimpaired.git vim-unimpaired`
 * **VimPrj**:         `git clone https://github.com/vim-scripts/vimprj.git vim-vimprj`
 * **VisIncr**:        `git clone https://github.com/vim-scripts/VisIncr.git vim-visincr`
-* **WMGraphViz**:     `git clone https://github.com/wannesm/wmgraphviz.vim.git`
+* **WMGraphViz**:     `git clone https://github.com/wannesm/wmgraphviz.vim.git vim-wmgrapviz`
 * **XPTemplate**:     `git clone https://github.com/drmingdrmer/xptemplate.git vim-xptemplate`
