@@ -6,6 +6,7 @@
 * **CtrlP**:          `git clone https://github.com/kien/ctrlp.vim.git vim-ctrlp`
 * **DfrankUtil**:     `git clone https://github.com/vim-scripts/DfrankUtil.git vim-dfrankutil`
 * **EasyMotion**:     `git clone https://github.com/vim-scripts/EasyMotion.git vim-easymotion`
+* **EasyTags**:       `git clone https://github.com/xolox/vim-easytags.git vim-easytags`
 * **FSwitch**:        `git clone https://github.com/derekwyatt/vim-fswitch.git vim-fswitch`
 * **Fugitive**:       `git clone https://github.com/tpope/vim-fugitive.git vim-fugitive`
 * **GNUPG**:          `git clone https://github.com/vim-scripts/gnupg.vim.git vim-gnupg`
@@ -21,9 +22,13 @@
 * **Surround**:       `git clone https://github.com/tpope/vim-surround.git vim-surround`
 * **Syntastic**:      `git clone https://github.com/scrooloose/syntastic.git vim-syntastic`
 * **Tabular**:        `git clone https://github.com/godlygeek/tabular.git vim-tabular`
+* **Tagbar**:         `git clone https://github.com/majutsushi/tagbar.git vim-tagbar`
+* **PhpCtags**:       `git clone https://github.com/vim-php/tagbar-phpctags.vim.git vim-phpctags`
+* **Tern**:           `git clone https://github.com/marijnh/tern_for_vim.git vim-tern`
 * **TwitVim**:        `git clone https://github.com/vim-scripts/TwitVim.git vim-twitvim`
 * **Unimpaired**:     `git clone https://github.com/tpope/vim-unimpaired.git vim-unimpaired`
 * **VimPrj**:         `git clone https://github.com/vim-scripts/vimprj.git vim-vimprj`
+* **VimMisc**:        `git clone https://github.com/xolox/vim-misc.git vim-vimmisc`
 * **VisIncr**:        `git clone https://github.com/vim-scripts/VisIncr.git vim-visincr`
 * **WMGraphViz**:     `git clone https://github.com/wannesm/wmgraphviz.vim.git vim-wmgrapviz`
 * **XPTemplate**:     `git clone https://github.com/drmingdrmer/xptemplate.git vim-xptemplate`

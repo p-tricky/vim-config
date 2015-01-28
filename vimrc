@@ -363,7 +363,7 @@ endfunction
 set synmaxcol=2048
 
 " I don't like it when the matching parens are automatically highlighted
-let loaded_matchparen = 1
+let loaded_matchparen = 0
 
 " Highlight the current line and column
 " Don't do this - It makes window redraws painfully slow
@@ -805,7 +805,7 @@ endif
 " My stuff
 "-----------------------------------------------------------------------------
 
-" compale .dvi files from .tex in vim with '\ll'
+" compile .dvi files from .tex in vim with '\ll'
 " view .dvi with '\lv'
 :let g:Tex_CompileRule_dvi = 'latex -src-specials -interaction=nonstopmode $*'
 
@@ -829,3 +829,16 @@ function! PrintFile(fname)
   call delete(a:fname)
   return v:shell_error
 endfunc
+
+" easytags defaults
+:set tags=./tags;
+:let g:easytags_dynamic_files = 1
+let g:easytags_languages = {
+\   'javascript': {
+\       'cmd': 'jsctags',
+\       'args': [],
+\       'fileoutput_opt': '-f',
+\       'stdout_opt': '-f-',
+\       'recurse_flag': '-R'
+\   }
+\}
