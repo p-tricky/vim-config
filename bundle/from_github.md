@@ -32,3 +32,4 @@
 * **VisIncr**:        `git clone https://github.com/vim-scripts/VisIncr.git vim-visincr`
 * **WMGraphViz**:     `git clone https://github.com/wannesm/wmgraphviz.vim.git vim-wmgrapviz`
 * **XPTemplate**:     `git clone https://github.com/drmingdrmer/xptemplate.git vim-xptemplate`
+* **YCM**:            `git clone https://github.com/Valloric/YouCompleteMe.git vim-ycm`

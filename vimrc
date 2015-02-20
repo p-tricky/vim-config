@@ -163,7 +163,7 @@ set hlsearch
 set incsearch
 
 " Add the unnamed register to the clipboard
-set clipboard+=unnamed
+set clipboard=unnamedplus
 
 " Automatically read a file that has changed on disk
 set autoread
@@ -831,14 +831,24 @@ function! PrintFile(fname)
 endfunc
 
 " easytags defaults
-:set tags=./tags;
-:let g:easytags_dynamic_files = 1
-let g:easytags_languages = {
-\   'javascript': {
-\       'cmd': 'jsctags',
-\       'args': [],
-\       'fileoutput_opt': '-f',
-\       'stdout_opt': '-f-',
-\       'recurse_flag': '-R'
-\   }
-\}
+set tags=./tags;
+let g:easytags_dynamic_files = 1
+let g:easytags_python_enabled = 1
+"let g:easytags_languages = {
+"\   'javascript': {
+"\       'cmd': 'jsctags',
+"\       'args': [],
+"\       'fileoutput_opt': '-f',
+"\       'stdout_opt': '-f-',
+"\       'recurse_flag': '-R'
+"\   }
+"\}
+
+
+" YCM stuff
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
+let g:ycm_extra_conf_vim_data = ['&filetype']
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_register_as_syntastic_checker = 0
