@@ -3,11 +3,11 @@
 "
 " It's got stuff in it.
 "
-
+"
 "-----------------------------------------------------------------------------
 " Global Stuff
 "-----------------------------------------------------------------------------
-
+"
 " Get pathogen up and running
 filetype off 
 call pathogen#runtime_append_all_bundles()
@@ -807,7 +807,7 @@ endif
 
 " compile .dvi files from .tex in vim with '\ll'
 " view .dvi with '\lv'
-:let g:Tex_CompileRule_dvi = 'latex -src-specials -interaction=nonstopmode $*'
+let g:Tex_CompileRule_dvi = 'latex -src-specials -interaction=nonstopmode $*'
 
 " think I need this to use tags with ruby
 set tags=./tags;
@@ -817,8 +817,8 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_no_default_include_dirs = 1
 let g:syntastic_cpp_auto_refresh_includes = 1
-
-let g:syntastic_c_remove_include_errors = 1
+" this is outdated
+" let g:syntastic_c_remove_include_errors = 1
 
 " printing
 set printoptions+=header:0
@@ -846,9 +846,22 @@ let g:easytags_python_enabled = 1
 
 
 " YCM stuff
+ 
+" prevents ycm from asking whether or not conf files are safe
 let g:ycm_confirm_extra_conf = 0
+
+" if no ycm_extra_conf.py is found
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
+
+" passes filetype to my ycm.py file
 let g:ycm_extra_conf_vim_data = ['&filetype']
+
+" seed identifiers with keywords from vim file
 let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_register_as_syntastic_checker = 0
+
+" I think this is outdated see https://github.com/Valloric/YouCompleteMe/issues/416
+"let g:ycm_register_as_syntastic_checker = 0
+
+" I want to see info from ycm servers
+" let g:ycm_server_use_vim_stdout = 0
+" Actually just use :YcmDebugInfo
