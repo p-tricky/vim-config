@@ -11,10 +11,10 @@
 * **Fugitive**:       `git clone https://github.com/tpope/vim-fugitive.git vim-fugitive`
 * **GNUPG**:          `git clone https://github.com/vim-scripts/gnupg.vim.git vim-gnupg`
 * **Gundo**:          `git clone https://github.com/sjl/gundo.vim.git vim-gundo`
-* **Indexer**:        `git clone https://github.com/vim-scripts/indexer.tar.gz vim-indexer`
 * **Jellybeans**:     `git clone https://github.com/nanotech/jellybeans.vim.git vim-jellybeans`
 * **JSON**:           `git clone https://github.com/elzr/vim-json.git vim-json`
 * **NERDTree**:       `git clone https://github.com/scrooloose/nerdtree.git vim-nerdtree`
+* **Obsession**:      `git clone https://github.com/tpope/vim-obsession.git vim-obsession`
 * **Protodef**:       `git clone https://github.com/derekwyatt/vim-protodef.git vim-protodef`
 * **SBT**:            `git clone https://github.com/derekwyatt/vim-sbt.git vim-sbt`
 * **Scala**:          `git clone https://github.com/derekwyatt/vim-scala.git vim-scala`
