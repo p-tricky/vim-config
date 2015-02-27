@@ -141,13 +141,13 @@ if has('win32')
 	TexLet g:Tex_ViewRule_dvi = 'yap -1'
 elseif has('macunix')
 	" Let the system pick.  If you want, you can override the choice here.
-	TexLet g:Tex_ViewRule_ps = ''
+	" TexLet g:Tex_ViewRule_ps = ''
 	TexLet g:Tex_ViewRule_pdf = ''
 	" TexLet g:Tex_ViewRule_pdf = 'Acrobat\ Reader\ 5.1'
 	TexLet g:Tex_ViewRule_dvi = ''
 	" Set this to 1 to disable opening a viewer with 'open -a'
 	" Note: If you do this, you need to specify viewers above
-	" TexLet g:Tex_TreatMacViewerAsUNIX = 1
+	TexLet g:Tex_TreatMacViewerAsUNIX = 1
 else
 	if executable('xdg-open')
 		TexLet g:Tex_ViewRule_ps = 'xdg-open'
