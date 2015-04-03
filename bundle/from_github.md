@@ -30,6 +30,7 @@
 * **VimPrj**:         `git clone https://github.com/vim-scripts/vimprj.git vim-vimprj`
 * **VimMisc**:        `git clone https://github.com/xolox/vim-misc.git vim-vimmisc`
 * **VisIncr**:        `git clone https://github.com/vim-scripts/VisIncr.git vim-visincr`
+* **WindowSwap**:     `git clone https://github.com/wesQ3/vim-windowswap.git vim-windowswap`
 * **WMGraphViz**:     `git clone https://github.com/wannesm/wmgraphviz.vim.git vim-wmgrapviz`
 * **XPTemplate**:     `git clone https://github.com/drmingdrmer/xptemplate.git vim-xptemplate`
 * **YCM**:            `git clone https://github.com/Valloric/YouCompleteMe.git vim-ycm`

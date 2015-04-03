@@ -43,7 +43,7 @@ set noignorecase
 " set the forward slash to be the slash of note.  Backslashes suck
 set shellslash
 if has("unix")
-  set shell=bash
+  set shell=zsh
 else
   set shell=ksh.exe
 endif
@@ -99,6 +99,9 @@ syntax on
 " Hide the mouse pointer while typing
 set mousehide
 
+" Enable mouse
+set mouse=nicr
+
 " Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
@@ -119,10 +122,11 @@ set guioptions=acg
 set timeoutlen=500
 
 " Keep some stuff in the history
-set history=100
+set history=1000
 
 " These commands open folds
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo
+
 " ploftus edits to folding
 set foldmethod=syntax
 set foldnestmax=2
@@ -163,7 +167,7 @@ set hlsearch
 set incsearch
 
 " Add the unnamed register to the clipboard
-set clipboard=unnamedplus
+set clipboard+=unnamed
 
 " Automatically read a file that has changed on disk
 set autoread
@@ -363,7 +367,7 @@ endfunction
 set synmaxcol=2048
 
 " I don't like it when the matching parens are automatically highlighted
-let loaded_matchparen = 0
+let loaded_matchparen = 1
 
 " Highlight the current line and column
 " Don't do this - It makes window redraws painfully slow
