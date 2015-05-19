@@ -869,3 +869,71 @@ let g:ycm_seed_identifiers_with_syntax = 1
 " I want to see info from ycm servers
 " let g:ycm_server_use_vim_stdout = 0
 " Actually just use :YcmDebugInfo
+
+" sudo save with W
+command W w !sudo tee % > /dev/null
+
+""""""""""PyMode Stuff""""""""""
+" Activate rope
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 0
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+"Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+
+""""""""""Powerline""""""""""
+
+" These lines setup the environment to show graphics and colors correctly.
+set nocompatible
+set t_Co=256
+
+let g:minBufExplForceSyntaxEnable = 1
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+if ! has('gui_running')
+  set ttimeoutlen=10
+  augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+  augroup END
+endif
+
+set laststatus=2 " Always display the statusline in all windows
+set guifont=Inconsolata\ for\ Powerline:h14
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)

@@ -16,6 +16,7 @@
 * **NERDTree**:       `git clone https://github.com/scrooloose/nerdtree.git vim-nerdtree`
 * **Obsession**:      `git clone https://github.com/tpope/vim-obsession.git vim-obsession`
 * **Protodef**:       `git clone https://github.com/derekwyatt/vim-protodef.git vim-protodef`
+* **Pymode**:          `git clone https://github.com/klen/python-mode.git vim-pymode`
 * **SBT**:            `git clone https://github.com/derekwyatt/vim-sbt.git vim-sbt`
 * **Scala**:          `git clone https://github.com/derekwyatt/vim-scala.git vim-scala`
 * **Solarized**:      `git clone https://github.com/altercation/vim-colors-solarized.git vim-solarized`
