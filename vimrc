@@ -202,7 +202,7 @@ let java_allow_cpp_keywords = 1
 let g:scala_use_default_keymappings = 0
 
 " System default for mappings is now the "," character
-let mapleader = ","
+let mapleader = " "
 
 " Wipe out all buffers
 nmap <silent> ,wa :1,9000bwipeout<cr>
@@ -811,10 +811,7 @@ endif
 
 " compile .dvi files from .tex in vim with '\ll'
 " view .dvi with '\lv'
-let g:Tex_CompileRule_dvi = 'latex -src-specials -interaction=nonstopmode $*'
-
-" think I need this to use tags with ruby
-set tags=./tags;
+" let g:Tex_CompileRule_dvi = 'latex -src-specials -interaction=nonstopmode $*'
 
 " Syntastic stuff
 let g:syntastic_cpp_check_header = 1
@@ -836,7 +833,6 @@ endfunc
 
 " easytags defaults
 set tags=./tags;
-let g:easytags_dynamic_files = 1
 let g:easytags_python_enabled = 1
 "let g:easytags_languages = {
 "\   'javascript': {
@@ -915,7 +911,6 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 let g:pymode_folding = 0
 
 """"""""""Powerline""""""""""
-
 " These lines setup the environment to show graphics and colors correctly.
 set nocompatible
 set t_Co=256
@@ -937,3 +932,6 @@ endif
 set laststatus=2 " Always display the statusline in all windows
 set guifont=Inconsolata\ for\ Powerline:h14
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+""""""""""AutoPairs""""""""""
+let g:AutoPairsFlyMode = 0
