@@ -145,9 +145,6 @@ set key=
 " Make the command-line completion better
 set wildmenu
 
-" Same as default except that I remove the 'u' option
-set complete=.,w,b,t
-
 " When completing by tag, show the whole tag, not just the function name
 set showfulltag
 
@@ -186,7 +183,7 @@ set wildignore+=*.o,*.class,*.git,*.svn
 " sucks.  Setting it to double makes it awesome.
 set ambiwidth=double
 
-" OK, so I'm gonna remove the VIM safety net for a while and see if kicks my ass
+" I live dangerously
 set nobackup
 set nowritebackup
 set noswapfile
@@ -205,35 +202,35 @@ let g:scala_use_default_keymappings = 0
 let mapleader = " "
 
 " Wipe out all buffers
-nmap <silent> ,wa :1,9000bwipeout<cr>
+nmap <silent> <leader>wa :1,9000bwipeout<cr>
 
 " Toggle paste mode
-nmap <silent> ,p :set invpaste<CR>:set paste?<CR>
+nmap <silent> <leader>p :set invpaste<CR>:set paste?<CR>
 
 " cd to the directory containing the file in the buffer
-nmap <silent> ,cd :lcd %:h<CR>
-nmap <silent> ,cr :lcd <c-r>=FindGitDirOrRoot()<cr><cr>
-nmap <silent> ,md :!mkdir -p %:p:h<CR>
+nmap <silent> <leader>cd :lcd %:h<CR>
+nmap <silent> <leader>cr :lcd <c-r>=FindGitDirOrRoot()<cr><cr>
+nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 
 " Turn off that stupid highlight search
-nmap <silent> ,n :nohls<CR>
+nmap <silent> <leader>n :nohls<CR>
 
 " put the vim directives for my file editing settings in
-nmap <silent> ,vi ovim:set ts=2 sts=2 sw=2:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
+nmap <silent> <leader>vi ovim:set ts=2 sts=2 sw=2:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
 
 " The following beast is something i didn't write... it will return the 
 " syntax highlighting group that the current "thing" under the cursor
 " belongs to -- very useful for figuring out what to change as far as 
 " syntax highlighting goes.
-nmap <silent> ,qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+nmap <silent> <leader>qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Make shift-insert work like in Xterm
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 
 " set text wrapping toggles
-nmap <silent> ,ww :set invwrap<cr>
-nmap <silent> ,wW :windo set invwrap<cr>
+nmap <silent> <leader>ww :set invwrap<cr>
+nmap <silent> <leader>wW :windo set invwrap<cr>
 
 " allow command line editing like emacs
 cnoremap <C-A>      <Home>
@@ -249,34 +246,19 @@ cnoremap <ESC><C-F> <S-Right>
 cnoremap <ESC><C-H> <C-W>
 
 " Maps to make handling windows a bit easier
-"noremap <silent> ,h :wincmd h<CR>
-"noremap <silent> ,j :wincmd j<CR>
-"noremap <silent> ,k :wincmd k<CR>
-"noremap <silent> ,l :wincmd l<CR>
-"noremap <silent> ,sb :wincmd p<CR>
+noremap <silent> <leader>h :wincmd h<CR>
+noremap <silent> <leader>j :wincmd j<CR>
+noremap <silent> <leader>k :wincmd k<CR>
+noremap <silent> <leader>l :wincmd l<CR>
+noremap <silent> <leader>sb :wincmd p<CR>
 noremap <silent> <C-F9>  :vertical resize -10<CR>
 noremap <silent> <C-F10> :resize +10<CR>
 noremap <silent> <C-F11> :resize -10<CR>
 noremap <silent> <C-F12> :vertical resize +10<CR>
-noremap <silent> ,s8 :vertical resize 83<CR>
-noremap <silent> ,cj :wincmd j<CR>:close<CR>
-noremap <silent> ,ck :wincmd k<CR>:close<CR>
-noremap <silent> ,ch :wincmd h<CR>:close<CR>
-noremap <silent> ,cl :wincmd l<CR>:close<CR>
-noremap <silent> ,cc :close<CR>
-noremap <silent> ,cw :cclose<CR>
-noremap <silent> ,ml <C-W>L
-noremap <silent> ,mk <C-W>K
-noremap <silent> ,mh <C-W>H
-noremap <silent> ,mj <C-W>J
-noremap <silent> <C-7> <C-W>>
-noremap <silent> <C-8> <C-W>+
-noremap <silent> <C-9> <C-W>+
-noremap <silent> <C-0> <C-W>>
 
 " Edit the vimrc file
-nmap <silent> ,ev :e $MYVIMRC<CR>
-nmap <silent> ,sv :so $MYVIMRC<CR>
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Make horizontal scrolling easier
 nmap <silent> <C-o> 10zl
@@ -289,34 +271,34 @@ imap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
 nmap <silent> <F3> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
 " Underline the current line with '='
-nmap <silent> ,u= :t.\|s/./=/g\|:nohls<cr>
-nmap <silent> ,u- :t.\|s/./-/g\|:nohls<cr>
-nmap <silent> ,u~ :t.\|s/./\\~/g\|:nohls<cr>
+nmap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
+nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
+nmap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 
 " Shrink the current window to fit the number of lines in the buffer.  Useful
 " for those buffers that are only a few lines
-nmap <silent> ,sw :execute ":resize " . line('$')<cr>
+nmap <silent> <leader>sw :execute ":resize " . line('$')<cr>
 
 " Use the bufkill plugin to eliminate a buffer but keep the window layout
-nmap ,bd :BD<cr>
+nmap <leader>bd :BD<cr>
 
 " Use CTRL-E to replace the original ',' mapping
-nnoremap <C-E> ,
+" nnoremap <C-E> ,
 
 " Alright... let's try this out
 imap jj <esc>
 cmap jj <esc>
 
 " I like jj - Let's try something else fun
-imap ,fn <c-r>=expand('%:t:r')<cr>
+imap <leader>fn <c-r>=expand('%:t:r')<cr>
 
 " Clear the text using a motion / text object and then move the character to the
 " next word
-nmap <silent> ,C :set opfunc=ClearText<CR>g@
-vmap <silent> ,C :<C-U>call ClearText(visual(), 1)<CR>
+nmap <silent> <leader>C :set opfunc=ClearText<CR>g@
+vmap <silent> <leader>C :<C-U>call ClearText(visual(), 1)<CR>
 
 " Make the current file executable
-nmap ,x :w<cr>:!chmod 755 %<cr>:e<cr>
+nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 
 " Digraphs
 " Alpha
@@ -392,10 +374,10 @@ autocmd User fugitive
   \ endif
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-nmap ,gs :Gstatus<cr>
-nmap ,ge :Gedit<cr>
-nmap ,gw :Gwrite<cr>
-nmap ,gr :Gread<cr>
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>ge :Gedit<cr>
+nmap <leader>gw :Gwrite<cr>
+nmap <leader>gr :Gread<cr>
 
 "-----------------------------------------------------------------------------
 " NERD Tree Plugin Settings
@@ -435,64 +417,6 @@ let g:ag_results_mapping_replacements = {
 \ }
 
 "-----------------------------------------------------------------------------
-" FSwitch mappings
-"-----------------------------------------------------------------------------
-nmap <silent> ,of :FSHere<CR>
-nmap <silent> ,ol :FSRight<CR>
-nmap <silent> ,oL :FSSplitRight<CR>
-nmap <silent> ,oh :FSLeft<CR>
-nmap <silent> ,oH :FSSplitLeft<CR>
-nmap <silent> ,ok :FSAbove<CR>
-nmap <silent> ,oK :FSSplitAbove<CR>
-nmap <silent> ,oj :FSBelow<CR>
-nmap <silent> ,oJ :FSSplitBelow<CR>
-
-"-----------------------------------------------------------------------------
-" XPTemplate settings
-"-----------------------------------------------------------------------------
-let g:xptemplate_brace_complete = ''
-
-"-----------------------------------------------------------------------------
-" TwitVim settings
-"-----------------------------------------------------------------------------
-let twitvim_enable_perl = 1
-let twitvim_browser_cmd = 'firefox'
-nmap ,tw :FriendsTwitter<cr>
-nmap ,tm :UserTwitter<cr>
-nmap ,tM :MentionsTwitter<cr>
-function! TwitVimMappings()
-    nmap <buffer> U :exe ":UnfollowTwitter " . expand("<cword>")<cr>
-    nmap <buffer> F :exe ":FollowTwitter " . expand("<cword>")<cr>
-    nmap <buffer> 7 :BackTwitter<cr>
-    nmap <buffer> 8 :ForwardTwitter<cr>
-    nmap <buffer> 1 :PreviousTwitter<cr>
-    nmap <buffer> 2 :NextTwitter<cr>
-endfunction
-augroup derek_twitvim
-    au!
-    au FileType twitvim call TwitVimMappings()
-augroup END
-
-"-----------------------------------------------------------------------------
-" VimSokoban settings
-"-----------------------------------------------------------------------------
-" Sokoban stuff
-let g:SokobanLevelDirectory = "/home/dwyatt/.vim/bundle/vim-sokoban/VimSokoban/"
-
-"-----------------------------------------------------------------------------
-" FuzzyFinder Settings
-"-----------------------------------------------------------------------------
-let g:fuf_splitPathMatching = 1
-let g:fuf_maxMenuWidth = 110
-let g:fuf_timeFormat = ''
-nmap <silent> ,fv :FufFile ~/.vim/<cr>
-nmap <silent> ,fc :FufMruCmd<cr>
-nmap <silent> ,fm :FufMruFile<cr>
-
-let g:CommandTMatchWindowAtTop = 1
-let g:make_scala_fuf_mappings = 0
-
-"-----------------------------------------------------------------------------
 " CtrlP Settings
 "-----------------------------------------------------------------------------
 let g:ctrlp_switch_buffer = 'E'
@@ -519,15 +443,6 @@ nmap ,fm :CtrlPMixed<cr>
 " Gundo Settings
 "-----------------------------------------------------------------------------
 nmap <c-F5> :GundoToggle<cr>
-
-"-----------------------------------------------------------------------------
-" Conque Settings
-"-----------------------------------------------------------------------------
-let g:ConqueTerm_FastMode = 1
-let g:ConqueTerm_ReadUnfocused = 1
-let g:ConqueTerm_InsertOnEnter = 1
-let g:ConqueTerm_PromptRegex = '^-->'
-let g:ConqueTerm_TERM = 'xterm'
 
 "-----------------------------------------------------------------------------
 " Functions
@@ -571,23 +486,24 @@ function! FindGitDirOrRoot()
   endif
 endfunction
 
-nmap <silent> ,ii :call IndentToNextBraceInLineAbove()<cr>
+nmap <silent> <leader>ii :call IndentToNextBraceInLineAbove()<cr>
 
-nmap <silent> ,mba :call MarkBufferInJumpList(expand('%:p'), 'a')<cr>
-nmap <silent> ,mbb :call MarkBufferInJumpList(expand('%:p'), 'b')<cr>
-nmap <silent> ,mbc :call MarkBufferInJumpList(expand('%:p'), 'c')<cr>
-nmap <silent> ,mbd :call MarkBufferInJumpList(expand('%:p'), 'd')<cr>
-nmap <silent> ,mbe :call MarkBufferInJumpList(expand('%:p'), 'e')<cr>
-nmap <silent> ,mbf :call MarkBufferInJumpList(expand('%:p'), 'f')<cr>
-nmap <silent> ,mbg :call MarkBufferInJumpList(expand('%:p'), 'g')<cr>
-nmap <silent> ,jba :call JumpToBufferInJumpList('a')<cr>
-nmap <silent> ,jbb :call JumpToBufferInJumpList('b')<cr>
-nmap <silent> ,jbc :call JumpToBufferInJumpList('c')<cr>
-nmap <silent> ,jbd :call JumpToBufferInJumpList('d')<cr>
-nmap <silent> ,jbe :call JumpToBufferInJumpList('e')<cr>
-nmap <silent> ,jbf :call JumpToBufferInJumpList('f')<cr>
-nmap <silent> ,jbg :call JumpToBufferInJumpList('g')<cr>
-nmap <silent> ,ljb :call ListJumpToBuffers()<cr>
+nmap <silent> <leader>mba :call MarkBufferInJumpList(expand('%:p'), 'a')<cr>
+nmap <silent> <leader>mbb :call MarkBufferInJumpList(expand('%:p'), 'b')<cr>
+nmap <silent> <leader>mbc :call MarkBufferInJumpList(expand('%:p'), 'c')<cr>
+nmap <silent> <leader>mbd :call MarkBufferInJumpList(expand('%:p'), 'd')<cr>
+nmap <silent> <leader>mbe :call MarkBufferInJumpList(expand('%:p'), 'e')<cr>
+nmap <silent> <leader>mbf :call MarkBufferInJumpList(expand('%:p'), 'f')<cr>
+nmap <silent> <leader>mbg :call MarkBufferInJumpList(expand('%:p'), 'g')<cr>
+nmap <silent> <leader>jba :call JumpToBufferInJumpList('a')<cr>
+nmap <silent> <leader>jbb :call JumpToBufferInJumpList('b')<cr>
+nmap <silent> <leader>jbc :call JumpToBufferInJumpList('c')<cr>
+nmap <silent> <leader>jbd :call JumpToBufferInJumpList('d')<cr>
+nmap <silent> <leader>jbe :call JumpToBufferInJumpList('e')<cr>
+nmap <silent> <leader>jbf :call JumpToBufferInJumpList('f')<cr>
+nmap <silent> <leader>jbg :call JumpToBufferInJumpList('g')<cr>
+nmap <silent> <leader>ljb :call ListJumpToBuffers()<cr>
+nmap <silent> <leader>hhh :call UltiSnips#ListSnippets()<cr>
 
 function! DiffCurrentFileAgainstAnother(snipoff, replacewith)
   let currentFile = expand('%:p')
@@ -616,8 +532,8 @@ function! HighlightAllOfWord(onoff)
   endif
 endfunction
 
-:nmap ,ha :call HighlightAllOfWord(1)<cr>
-:nmap ,hA :call HighlightAllOfWord(0)<cr>
+:nmap <leader>ha :call HighlightAllOfWord(1)<cr>
+:nmap <leader>hA :call HighlightAllOfWord(0)<cr>
 
 function! LengthenCWD()
   let cwd = getcwd()
@@ -633,7 +549,7 @@ function! LengthenCWD()
   endif
 endfunction
 
-:nmap ,ld :call LengthenCWD()<cr>
+:nmap <leader>ld :call LengthenCWD()<cr>
 
 function! ShortenCWD()
   let cwd = split(getcwd(), '/')
@@ -650,7 +566,7 @@ function! ShortenCWD()
   exec ":lcd /" . newdir
 endfunction
 
-:nmap ,sd :call ShortenCWD()<cr>
+:nmap <leader>sd :call ShortenCWD()<cr>
 
 function! RedirToYankRegisterF(cmd, ...)
   let cmd = a:cmd . " " . join(a:000, " ")
@@ -933,5 +849,12 @@ set laststatus=2 " Always display the statusline in all windows
 set guifont=Inconsolata\ for\ Powerline:h14
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
-""""""""""AutoPairs""""""""""
-let g:AutoPairsFlyMode = 0
+""""""""""UtilSnips""""""""""
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
