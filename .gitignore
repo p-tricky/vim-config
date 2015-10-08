@@ -3,3 +3,5 @@
 passwords.vim
 tags
 ycm.pyc
+!from_github.md
+bundle/*
