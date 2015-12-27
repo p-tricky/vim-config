@@ -101,6 +101,7 @@ set mousehide
 
 " Enable mouse
 set mouse=nicr
+set ttymouse=xterm2
 
 " Set up the gui cursor to look nice
 set guicursor=n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor,r-cr:hor20-Cursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
@@ -421,7 +422,7 @@ let g:ag_results_mapping_replacements = {
 "-----------------------------------------------------------------------------
 let g:ctrlp_switch_buffer = 'E'
 let g:ctrlp_tabpage_position = 'c'
-let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_root_markers = ['.project.root']
 let g:ctrlp_custom_ignore = '\v%(/\.%(git|hg|svn)|\.%(class|o|png|jpg|jpeg|bmp|tar|jar|tgz|deb|zip)$|/target/%(quickfix|resolution-cache|streams)|/target/scala-2.10/%(classes|test-classes|sbt-0.13|cache)|/project/target|/project/project)'
 let g:ctrlp_open_new_file = 'r'

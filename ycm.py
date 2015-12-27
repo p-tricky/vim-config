@@ -9,6 +9,8 @@ def FlagsForFile(filename, **kwargs):
     '-isystem',
     '/usr/include',
     '-isystem',
+    '/usr/include/mpich',
+    '-isystem',
     '/usr/local/include',
     '-isystem',
     '/usr/lib/clang/3.4/include',
