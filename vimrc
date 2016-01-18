@@ -1,14 +1,4 @@
-"
-" Derek Wyatt's Vim Configuration
-"
-" It's got stuff in it.
-"
-"
-"-----------------------------------------------------------------------------
-" Global Stuff
-"-----------------------------------------------------------------------------
-"
-" Get pathogen up and running
+" get pathogen up and running
 filetype off 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
@@ -735,8 +725,6 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_no_default_include_dirs = 1
 let g:syntastic_cpp_auto_refresh_includes = 1
-" this is outdated
-" let g:syntastic_c_remove_include_errors = 1
 
 " printing
 set printoptions+=header:0
@@ -751,16 +739,6 @@ endfunc
 " easytags defaults
 set tags=./tags;
 let g:easytags_python_enabled = 1
-"let g:easytags_languages = {
-"\   'javascript': {
-"\       'cmd': 'jsctags',
-"\       'args': [],
-"\       'fileoutput_opt': '-f',
-"\       'stdout_opt': '-f-',
-"\       'recurse_flag': '-R'
-"\   }
-"\}
-
 
 " YCM stuff
  
