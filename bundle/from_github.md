@@ -1,5 +1,6 @@
 # Stuff pulled from GitHub
 
+* **Ag**:             `git clone https://github.com/rking/ag.vim vim-ag`
 * **BufKill**:        `git clone https://github.com/vim-scripts/bufkill.vim.git vim-bufkill`
 * **CtrlP**:          `git clone https://github.com/kien/ctrlp.vim.git vim-ctrlp`
 * **EasyMotion**:     `git clone https://github.com/vim-scripts/EasyMotion.git vim-easymotion`
