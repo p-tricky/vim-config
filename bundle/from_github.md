@@ -26,3 +26,4 @@
 * **VimSnips**:       `git clone https://github.com/honza/vim-snippets.git vim-vimsnips`
 * **WindowSwap**:     `git clone https://github.com/wesQ3/vim-windowswap.git vim-windowswap`
 * **YCM**:            `git clone https://github.com/Valloric/YouCompleteMe.git vim-ycm`
+* **YCMGenerator**:   `git clone https://github.com/rdnetto/YCM-Generator.git vim-ycmgen`

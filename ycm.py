@@ -39,7 +39,6 @@ def FlagsForFile(filename, **kwargs):
     flags += ['-xc']
   elif filetype == 'cpp':
     flags += ['-xc++']
-    flags += ['-std=c++11']
   elif filetype == 'objc':
     flags += ['-ObjC']
   else:
