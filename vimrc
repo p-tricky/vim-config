@@ -165,6 +165,7 @@ set grepprg=grep\ -nH\ $*
 " Trying out the line numbering thing... never liked it, but that doesn't mean
 " I shouldn't give it another go :)
 set relativenumber
+set number
 
 " Types of files to ignore when autocompleting things
 set wildignore+=*.o,*.class,*.git,*.svn
