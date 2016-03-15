@@ -755,9 +755,6 @@ let g:ycm_extra_conf_vim_data = ['&filetype']
 " seed identifiers with keywords from vim file
 let g:ycm_seed_identifiers_with_syntax = 1
 
-" I think this is outdated see https://github.com/Valloric/YouCompleteMe/issues/416
-"let g:ycm_register_as_syntastic_checker = 0
-
 " I want to see info from ycm servers
 " let g:ycm_server_use_vim_stdout = 0
 " Actually just use :YcmDebugInfo
