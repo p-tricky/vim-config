@@ -698,6 +698,7 @@ iab teh        the
 "-----------------------------------------------------------------------------
 " Set up the window colors and size
 "-----------------------------------------------------------------------------
+colorscheme liquidcarbon
 if has("gui_running")
   exe "set guifont=" . g:main_font
   colorscheme xoria256
