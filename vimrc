@@ -698,7 +698,12 @@ iab teh        the
 "-----------------------------------------------------------------------------
 " Set up the window colors and size
 "-----------------------------------------------------------------------------
-colorscheme liquidcarbon
+"solarized for terminal vim
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_diffmode="high"
+
 if has("gui_running")
   exe "set guifont=" . g:main_font
   colorscheme xoria256
