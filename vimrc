@@ -243,10 +243,6 @@ noremap <silent> <leader>j :wincmd j<CR>
 noremap <silent> <leader>k :wincmd k<CR>
 noremap <silent> <leader>l :wincmd l<CR>
 noremap <silent> <leader>sb :wincmd p<CR>
-noremap <silent> <C-F9>  :vertical resize -10<CR>
-noremap <silent> <C-F10> :resize +10<CR>
-noremap <silent> <C-F11> :resize -10<CR>
-noremap <silent> <C-F12> :vertical resize +10<CR>
 
 " Edit the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -377,9 +373,6 @@ nmap <leader>gr :Gread<cr>
 " Toggle the NERD Tree on an off with F7
 nmap <F7> :NERDTreeToggle<CR>
 
-" Close the NERD Tree with Shift-F7
-nmap <S-F7> :NERDTreeClose<CR>
-
 " Show the bookmarks table on startup
 let NERDTreeShowBookmarks=1
 
@@ -434,7 +427,7 @@ nmap ,fm :CtrlPMixed<cr>
 "-----------------------------------------------------------------------------
 " Gundo Settings
 "-----------------------------------------------------------------------------
-nmap <c-F5> :GundoToggle<cr>
+nmap <F5> :GundoToggle<cr>
 
 "-----------------------------------------------------------------------------
 " Functions
@@ -844,4 +837,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Replace word under cursor "
 nmap <Leader>s :%s/\<<C-r><C-w>\>/
+
+"-----------------------------------------------------------------------------
+" Tagbar Plugin Settings
+"-----------------------------------------------------------------------------
+nmap <F4> :TagbarToggle<CR>
 
