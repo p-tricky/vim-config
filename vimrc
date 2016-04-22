@@ -753,7 +753,7 @@ let g:easytags_python_enabled = 1
 let g:ycm_confirm_extra_conf = 0
 
 " if no ycm_extra_conf.py is found
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
 
 " passes filetype to my ycm.py file
 let g:ycm_extra_conf_vim_data = ['&filetype']
