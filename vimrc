@@ -841,3 +841,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+" Replace word under cursor "
+nmap <Leader>s :%s/\<<C-r><C-w>\>/
+
