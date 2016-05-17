@@ -692,10 +692,12 @@ iab teh        the
 " Set up the window colors and size
 "-----------------------------------------------------------------------------
 "solarized for terminal vim
-syntax enable
-set background=dark
-colorscheme solarized
-let g:solarized_diffmode="high"
+if &diff
+  syntax enable
+  set background=dark
+  colorscheme solarized
+  let g:solarized_diffmode="high"
+endif
 
 if has("gui_running")
   exe "set guifont=" . g:main_font
@@ -780,18 +782,15 @@ let g:pymode_rope = 0
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Don't auto check on save
-let g:pymode_lint_write = 0
-
 " Support virtualenv
 let g:pymode_virtualenv = 1
 
 " Enable breakpoints plugin
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
+
+" Run code with leader r
+let g:pymode_run_bind = '<leader>r'
 
 " syntax highlighting
 let g:pymode_syntax = 1
@@ -801,6 +800,9 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+
+" Indents
+let g:pymode_indent=1
 
 """"""""""Powerline""""""""""
 " These lines setup the environment to show graphics and colors correctly.
