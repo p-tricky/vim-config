@@ -602,7 +602,6 @@ endfunction
 command! ToggleMinimap call ToggleMinimap()
 
 " I /literally/ never use this and it's pissing me off
-" nnoremap <space> :ToggleMinimap<CR>
 
 "-----------------------------------------------------------------------------
 " Commands
@@ -788,6 +787,7 @@ let g:pymode_virtualenv = 1
 " Enable breakpoints plugin
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
+let g:pymode_breakpoint_cmd = "import ipdb; ipdb.set_trace()"
 
 " Run code with leader r
 let g:pymode_run_bind = '<leader>r'
@@ -839,6 +839,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Replace word under cursor "
 nmap <Leader>s :%s/\<<C-r><C-w>\>/
+
+" find word under cursor "
+nmap <Leader>f :Ag -r <C-r><C-w> .<CR>
 
 "-----------------------------------------------------------------------------
 " Tagbar Plugin Settings
