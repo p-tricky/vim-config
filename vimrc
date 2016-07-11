@@ -838,10 +838,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsEditSplit="vertical"
 
 " Replace word under cursor "
-nmap <Leader>s :%s/\<<C-r><C-w>\>/
+vnoremap <Leader>s "dy:%sno/<C-r>"/
 
 " find word under cursor "
-nmap <Leader>f :Ag -r <C-r><C-w> .<CR>
+vnoremap <Leader>f "dy:Ag -r <C-r>" .
 
 "-----------------------------------------------------------------------------
 " Tagbar Plugin Settings
