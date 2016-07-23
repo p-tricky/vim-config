@@ -726,6 +726,21 @@ let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_no_include_search = 1
 let g:syntastic_cpp_no_default_include_dirs = 1
 let g:syntastic_cpp_auto_refresh_includes = 1
+let g:syntastic_javascript_checkers = ['eslint']
+function! FixJS()
+    "Save current cursor position"
+    let l:winview = winsaveview()
+    "run eslint fix on current buffer"
+    ! eslint --fix %
+    "Restore cursor position"
+    call winrestview(l:winview)
+endfunction
+command! FixJS :call FixJS()
+
+nnoremap <leader>jt :! jsctags -o tags ./<CR>
+
+"Run the FixJS command just before the buffer is written for *.js files"
+autocmd BufWritePre *.js FixJS
 
 " printing
 set printoptions+=header:0

@@ -7,6 +7,7 @@
 * **EasyTags**:       `git clone https://github.com/xolox/vim-easytags.git vim-easytags`
 * **Fugitive**:       `git clone https://github.com/tpope/vim-fugitive.git vim-fugitive`
 * **Gundo**:          `git clone https://github.com/sjl/gundo.vim.git vim-gundo`
+* **JavaScript**:     `git clone https://github.com/pangloss/vim-javascript.git vim-js`
 * **Jellybeans**:     `git clone https://github.com/nanotech/jellybeans.vim.git vim-jellybeans`
 * **JSON**:           `git clone https://github.com/elzr/vim-json.git vim-json`
 * **NERDTree**:       `git clone https://github.com/scrooloose/nerdtree.git vim-nerdtree`
