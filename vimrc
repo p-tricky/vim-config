@@ -220,23 +220,6 @@ nmap <silent> <leader>qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"na
 map <S-Insert> <MiddleMouse>
 map! <S-Insert> <MiddleMouse>
 
-" set text wrapping toggles
-nmap <silent> <leader>ww :set invwrap<cr>
-nmap <silent> <leader>wW :windo set invwrap<cr>
-
-" allow command line editing like emacs
-cnoremap <C-A>      <Home>
-cnoremap <C-B>      <Left>
-cnoremap <C-E>      <End>
-cnoremap <C-F>      <Right>
-cnoremap <C-N>      <End>
-cnoremap <C-P>      <Up>
-cnoremap <ESC>b     <S-Left>
-cnoremap <ESC><C-B> <S-Left>
-cnoremap <ESC>f     <S-Right>
-cnoremap <ESC><C-F> <S-Right>
-cnoremap <ESC><C-H> <C-W>
-
 " Maps to make handling windows a bit easier
 noremap <silent> <leader>h :wincmd h<CR>
 noremap <silent> <leader>j :wincmd j<CR>
@@ -471,25 +454,6 @@ function! FindGitDirOrRoot()
   endif
 endfunction
 
-nmap <silent> <leader>ii :call IndentToNextBraceInLineAbove()<cr>
-
-nmap <silent> <leader>mba :call MarkBufferInJumpList(expand('%:p'), 'a')<cr>
-nmap <silent> <leader>mbb :call MarkBufferInJumpList(expand('%:p'), 'b')<cr>
-nmap <silent> <leader>mbc :call MarkBufferInJumpList(expand('%:p'), 'c')<cr>
-nmap <silent> <leader>mbd :call MarkBufferInJumpList(expand('%:p'), 'd')<cr>
-nmap <silent> <leader>mbe :call MarkBufferInJumpList(expand('%:p'), 'e')<cr>
-nmap <silent> <leader>mbf :call MarkBufferInJumpList(expand('%:p'), 'f')<cr>
-nmap <silent> <leader>mbg :call MarkBufferInJumpList(expand('%:p'), 'g')<cr>
-nmap <silent> <leader>jba :call JumpToBufferInJumpList('a')<cr>
-nmap <silent> <leader>jbb :call JumpToBufferInJumpList('b')<cr>
-nmap <silent> <leader>jbc :call JumpToBufferInJumpList('c')<cr>
-nmap <silent> <leader>jbd :call JumpToBufferInJumpList('d')<cr>
-nmap <silent> <leader>jbe :call JumpToBufferInJumpList('e')<cr>
-nmap <silent> <leader>jbf :call JumpToBufferInJumpList('f')<cr>
-nmap <silent> <leader>jbg :call JumpToBufferInJumpList('g')<cr>
-nmap <silent> <leader>ljb :call ListJumpToBuffers()<cr>
-nmap <silent> <leader>hhh :call UltiSnips#ListSnippets()<cr>
-
 function! DiffCurrentFileAgainstAnother(snipoff, replacewith)
   let currentFile = expand('%:p')
   let otherfile = substitute(currentFile, "^" . a:snipoff, a:replacewith, '')
@@ -498,60 +462,6 @@ function! DiffCurrentFileAgainstAnother(snipoff, replacewith)
 endfunction
 
 command! -nargs=+ DiffCurrent call DiffCurrentFileAgainstAnother(<f-args>)
-
-function! RunSystemCall(systemcall)
-  let output = system(a:systemcall)
-  let output = substitute(output, "\n", '', 'g')
-  return output
-endfunction
-
-function! HighlightAllOfWord(onoff)
-  if a:onoff == 1
-    :augroup highlight_all
-    :au!
-    :au CursorMoved * silent! exe printf('match Search /\<%s\>/', expand('<cword>'))
-    :augroup END
-  else
-    :au! highlight_all
-    match none /\<%s\>/
-  endif
-endfunction
-
-:nmap <leader>ha :call HighlightAllOfWord(1)<cr>
-:nmap <leader>hA :call HighlightAllOfWord(0)<cr>
-
-function! LengthenCWD()
-  let cwd = getcwd()
-  if cwd == '/'
-    return
-  endif
-  let lengthend = substitute(cwd, '/[^/]*$', '', '')
-  if lengthend == ''
-    let lengthend = '/'
-  endif
-  if cwd != lengthend
-    exec ":lcd " . lengthend
-  endif
-endfunction
-
-:nmap <leader>ld :call LengthenCWD()<cr>
-
-function! ShortenCWD()
-  let cwd = split(getcwd(), '/')
-  let filedir = split(expand("%:p:h"), '/')
-  let i = 0
-  let newdir = ""
-  while i < len(filedir)
-    let newdir = newdir . "/" . filedir[i]
-    if len(cwd) == i || filedir[i] != cwd[i]
-      break
-    endif
-    let i = i + 1
-  endwhile
-  exec ":lcd /" . newdir
-endfunction
-
-:nmap <leader>sd :call ShortenCWD()<cr>
 
 function! RedirToYankRegisterF(cmd, ...)
   let cmd = a:cmd . " " . join(a:000, " ")
