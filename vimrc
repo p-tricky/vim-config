@@ -1,19 +1,41 @@
-" get pathogen up and running
+" get vundle up and running
+set nocompatible
 filetype off 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+set runtimepath+=~/.vim/bundle/Vundle.vim
 
-" Add xptemplate global personal directory value
-if has("unix")
-  set runtimepath+=~/.vim/xpt-personal
-endif
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'EasyMotion'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bufkill.vim'
+Plugin 'elzr/vim-json'
+Plugin 'endel/vim-github-colorscheme'
+Plugin 'godlygeek/tabular'
+Plugin 'kien/ctrlp.vim'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'rking/ag.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
+Plugin 'SirVer/Ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'sjl/gundo.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'xolox/vim-misc'
+Plugin 'bfredl/nvim-ipy'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'jnurmine/Zenburn'
+call vundle#end()
 
 " Set filetype stuff to on
 filetype on
 filetype plugin on
 filetype indent on
 
-" Tabstops are 4 spaces
+" Tabstops are 2 spaces
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -54,21 +76,6 @@ set hidden
 " Make the 'cw' and like commands put a $ at the end instead of just deleting
 " the text and replacing it
 set cpoptions=ces$
-
-function! DerekFugitiveStatusLine()
-  let status = fugitive#statusline()
-  let trimmed = substitute(status, '\[Git(\(.*\))\]', '\1', '')
-  let trimmed = substitute(trimmed, '\(\w\)\w\+\ze/', '\1', '')
-  let trimmed = substitute(trimmed, '/[^_]*\zs_.*', '', '')
-  if len(trimmed) == 0
-    return ""
-  else
-    return '(' . trimmed[0:10] . ')'
-  endif
-endfunction
-
-" Set the status line the way i like it
-set stl=%f\ %m\ %r%{DerekFugitiveStatusLine()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
 
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2
@@ -180,45 +187,18 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" dictionary for english words
-" I don't actually use this much at all and it makes my life difficult in general
-"set dictionary=$VIM/words.txt
-
-" Let the syntax highlighting for Java files allow cpp keywords
-let java_allow_cpp_keywords = 1
-
-" I don't want to have the default keymappings for my scala plugin evaluated
-let g:scala_use_default_keymappings = 0
-
 " System default for mappings is now the "," character
 let mapleader = " "
-
-" Wipe out all buffers
-nmap <silent> <leader>wa :1,9000bwipeout<cr>
 
 " Toggle paste mode
 nmap <silent> <leader>p :set invpaste<CR>:set paste?<CR>
 
 " cd to the directory containing the file in the buffer
 nmap <silent> <leader>cd :lcd %:h<CR>
-nmap <silent> <leader>cr :lcd <c-r>=FindGitDirOrRoot()<cr><cr>
 nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 
 " Turn off that stupid highlight search
 nmap <silent> <leader>n :nohls<CR>
-
-" put the vim directives for my file editing settings in
-nmap <silent> <leader>vi ovim:set ts=2 sts=2 sw=2:<CR>vim600:fdm=marker fdl=1 fdc=0:<ESC>
-
-" The following beast is something i didn't write... it will return the 
-" syntax highlighting group that the current "thing" under the cursor
-" belongs to -- very useful for figuring out what to change as far as 
-" syntax highlighting goes.
-nmap <silent> <leader>qq :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" Make shift-insert work like in Xterm
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
 
 " Maps to make handling windows a bit easier
 noremap <silent> <leader>h :wincmd h<CR>
@@ -229,17 +209,6 @@ noremap <silent> <leader>sb :wincmd p<CR>
 
 " Edit the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
-" Make horizontal scrolling easier
-nmap <silent> <C-o> 10zl
-nmap <silent> <C-i> 10zh
-
-" Add a GUID to the current line
-imap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
-
-" Toggle fullscreen mode
-nmap <silent> <F3> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
 
 " Underline the current line with '='
 nmap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
@@ -255,72 +224,15 @@ nmap <leader>bd :BD<cr>
 
 " Use CTRL-E to replace the original ',' mapping
 " nnoremap <C-E> ,
-
 " Alright... let's try this out
 imap jj <esc>
 cmap jj <esc>
 
-" I like jj - Let's try something else fun
-imap <leader>fn <c-r>=expand('%:t:r')<cr>
-
-" Clear the text using a motion / text object and then move the character to the
-" next word
-nmap <silent> <leader>C :set opfunc=ClearText<CR>g@
-vmap <silent> <leader>C :<C-U>call ClearText(visual(), 1)<CR>
-
 " Make the current file executable
 nmap <leader>x :w<cr>:!chmod 755 %<cr>:e<cr>
 
-" Digraphs
-" Alpha
-imap <c-l><c-a> <c-k>a*
-" Beta
-imap <c-l><c-b> <c-k>b*
-" Gamma
-imap <c-l><c-g> <c-k>g*
-" Delta
-imap <c-l><c-d> <c-k>d*
-" Epslion
-imap <c-l><c-e> <c-k>e*
-" Lambda
-imap <c-l><c-l> <c-k>l*
-" Eta
-imap <c-l><c-y> <c-k>y*
-" Theta
-imap <c-l><c-h> <c-k>h*
-" Mu
-imap <c-l><c-m> <c-k>m*
-" Rho
-imap <c-l><c-r> <c-k>r*
-" Pi
-imap <c-l><c-p> <c-k>p*
-" Phi
-imap <c-l><c-f> <c-k>f*
-
-function! ClearText(type, ...)
-	let sel_save = &selection
-	let &selection = "inclusive"
-	let reg_save = @@
-	if a:0 " Invoked from Visual mode, use '< and '> marks
-		silent exe "normal! '<" . a:type . "'>r w"
-	elseif a:type == 'line'
-		silent exe "normal! '[V']r w"
-	elseif a:type == 'line'
-		silent exe "normal! '[V']r w"
-    elseif a:type == 'block'
-      silent exe "normal! `[\<C-V>`]r w"
-    else
-      silent exe "normal! `[v`]r w"
-    endif
-    let &selection = sel_save
-    let @@ = reg_save
-endfunction
-
 " Syntax coloring lines that are too long just slows down the world
 set synmaxcol=2048
-
-" I don't like it when the matching parens are automatically highlighted
-let loaded_matchparen = 1
 
 " Highlight the current line and column
 " Don't do this - It makes window redraws painfully slow
@@ -366,25 +278,6 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
                    \ '\.intermediate\.manifest$', '^mt.dep$' ]
 
 "-----------------------------------------------------------------------------
-" GPG Stuff
-"-----------------------------------------------------------------------------
-if has("mac")
-    let g:GPGExecutable = "gpg2"
-    let g:GPGUseAgent = 0
-endif
-
-"-----------------------------------------------------------------------------
-" AG (SilverSearcher) Settings
-"-----------------------------------------------------------------------------
-nmap ,sf :AgForCurrentFileDir 
-nmap ,sr :AgForProjectRoot 
-nmap ,se :AgForExtension 
-let g:ag_results_mapping_replacements = {
-\   'open_and_close': '<cr>',
-\   'open': 'o',
-\ }
-
-"-----------------------------------------------------------------------------
 " CtrlP Settings
 "-----------------------------------------------------------------------------
 let g:ctrlp_switch_buffer = 'E'
@@ -401,149 +294,14 @@ let g:ctrlp_prompt_mappings = {
   \ 'PrtHistory(-1)':       ['<c-j>', '<down>'],
   \ 'PrtHistory(1)':        ['<c-i>', '<up>']
 \ }
-nmap ,fb :CtrlPBuffer<cr>
-nmap ,ff :CtrlP .<cr>
-nmap ,fF :execute ":CtrlP " . expand('%:p:h')<cr>
-nmap ,fr :CtrlP<cr>
-nmap ,fm :CtrlPMixed<cr>
 
 "-----------------------------------------------------------------------------
 " Gundo Settings
 "-----------------------------------------------------------------------------
 nmap <F5> :GundoToggle<cr>
-
-"-----------------------------------------------------------------------------
-" Functions
-"-----------------------------------------------------------------------------
-if !exists('g:bufferJumpList')
-  let g:bufferJumpList = {}
-endif
-
-function! MarkBufferInJumpList(bufstr, letter)
-  let g:bufferJumpList[a:letter] = a:bufstr
-endfunction
-
-function! JumpToBufferInJumpList(letter)
-  if has_key(g:bufferJumpList, a:letter)
-    exe ":buffer " . g:bufferJumpList[a:letter]
-  else
-    echoerr a:letter . " isn't mapped to any existing buffer"
-  endif
-endfunction
-
-function! ListJumpToBuffers()
-  for key in keys(g:bufferJumpList)
-    echo key . " = " . g:bufferJumpList[key]
-  endfor
-endfunction
-
-function! IndentToNextBraceInLineAbove()
-  :normal 0wk
-  :normal "vyf(
-  let @v = substitute(@v, '.', ' ', 'g')
-  :normal j"vPl
-endfunction
-
-function! FindGitDirOrRoot()
-  let curdir = expand('%:p:h')
-  let gitdir = finddir('.git', curdir . ';')
-  if gitdir != ''
-    return substitute(gitdir, '\/\.git$', '', '')
-  else
-    return '/'
-  endif
-endfunction
-
-function! DiffCurrentFileAgainstAnother(snipoff, replacewith)
-  let currentFile = expand('%:p')
-  let otherfile = substitute(currentFile, "^" . a:snipoff, a:replacewith, '')
-  only
-  execute "vertical diffsplit " . otherfile
-endfunction
-
-command! -nargs=+ DiffCurrent call DiffCurrentFileAgainstAnother(<f-args>)
-
-function! RedirToYankRegisterF(cmd, ...)
-  let cmd = a:cmd . " " . join(a:000, " ")
-  redir @*>
-  exe cmd
-  redir END
-endfunction
-
-command! -complete=command -nargs=+ RedirToYankRegister 
-      \ silent! call RedirToYankRegisterF(<f-args>)
-
-function! ToggleMinimap()
-  if exists("s:isMini") && s:isMini == 0
-    let s:isMini = 1
-  else
-    let s:isMini = 0
-  end
-
-  if (s:isMini == 0)
-    " save current visible lines
-    let s:firstLine = line("w0")
-    let s:lastLine = line("w$")
-
-    " make font small
-    exe "set guifont=" . g:small_font
-    " highlight lines which were visible
-    let s:lines = ""
-    for i in range(s:firstLine, s:lastLine)
-      let s:lines = s:lines . "\\%" . i . "l"
-
-      if i < s:lastLine
-        let s:lines = s:lines . "\\|"
-      endif
-    endfor
-
-    exe 'match Visible /' . s:lines . '/'
-    hi Visible guibg=lightblue guifg=black term=bold
-    nmap <s-j> 10j
-    nmap <s-k> 10k
-  else
-    exe "set guifont=" . g:main_font
-    hi clear Visible
-    nunmap <s-j>
-    nunmap <s-k>
-  endif
-endfunction
-
-command! ToggleMinimap call ToggleMinimap()
-
-" I /literally/ never use this and it's pissing me off
-
-"-----------------------------------------------------------------------------
-" Commands
-"-----------------------------------------------------------------------------
-function! FreemindToListF()
-  setl filetype=
-  silent! :%s/^\(\s*\).*TEXT="\([^"]*\)".*$/\1- \2/
-  silent! :g/^\s*</d
-  silent! :%s/&quot;/"/g
-  silent! :%s/&apos;/\'/g
-  silent! g/^-/s/- //
-  silent! g/^\w/t.|s/./=/g
-  silent! g/^\s*-/normal O
-  silent! normal 3GgqG
-  silent! %s/^\s\{4}\zs-/o/
-  silent! %s/^\s\{12}\zs-/+/
-  silent! %s/^\s\{16}\zs-/*/
-  silent! %s/^\s\{20}\zs-/#/
-  silent! normal gg
-endfunction
-
-command! FreemindToList call FreemindToListF()
-
 "-----------------------------------------------------------------------------
 " Auto commands
 "-----------------------------------------------------------------------------
-augroup derek_xsd
-  au!
-  au BufEnter *.xsd,*.wsdl,*.xml setl tabstop=4 shiftwidth=4
-  au BufEnter *.xsd,*.wsdl,*.xml setl formatoptions=crq textwidth=120 colorcolumn=120
-augroup END
-
 augroup Binary
   au!
   au BufReadPre   *.bin let &bin=1
@@ -560,38 +318,8 @@ augroup END
 " Fix constant spelling mistakes
 "-----------------------------------------------------------------------------
 
-iab Acheive    Achieve
-iab acheive    achieve
-iab Alos       Also
-iab alos       also
-iab Aslo       Also
-iab aslo       also
-iab Becuase    Because
-iab becuase    because
-iab Bianries   Binaries
-iab bianries   binaries
-iab Bianry     Binary
-iab bianry     binary
-iab Charcter   Character
-iab charcter   character
-iab Charcters  Characters
-iab charcters  characters
-iab Exmaple    Example
-iab exmaple    example
-iab Exmaples   Examples
-iab exmaples   examples
-iab Fone       Phone
-iab fone       phone
-iab Lifecycle  Life-cycle
-iab lifecycle  life-cycle
-iab Lifecycles Life-cycles
-iab lifecycles life-cycles
 iab Seperate   Separate
 iab seperate   separate
-iab Seureth    Suereth
-iab seureth    suereth
-iab Shoudl     Should
-iab shoudl     should
 iab Taht       That
 iab taht       that
 iab Teh        The
@@ -621,36 +349,10 @@ if has("gui_running")
     let g:vimrcloaded = 1
   endif
 endif
+
+colorscheme zenburn
+
 :nohls
-
-"-----------------------------------------------------------------------------
-" My stuff
-"-----------------------------------------------------------------------------
-
-" compile .dvi files from .tex in vim with '\ll'
-" view .dvi with '\lv'
-" let g:Tex_CompileRule_dvi = 'latex -src-specials -interaction=nonstopmode $*'
-
-" Syntastic stuff
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_no_include_search = 1
-let g:syntastic_cpp_no_default_include_dirs = 1
-let g:syntastic_cpp_auto_refresh_includes = 1
-let g:syntastic_javascript_checkers = ['eslint']
-function! FixJS()
-    "Save current cursor position"
-    let l:winview = winsaveview()
-    "run eslint fix on current buffer"
-    ! eslint --fix %
-    "Restore cursor position"
-    call winrestview(l:winview)
-endfunction
-command! FixJS :call FixJS()
-
-nnoremap <leader>jt :! jsctags -o tags ./<CR>
-
-"Run the FixJS command just before the buffer is written for *.js files"
-autocmd BufWritePre *.js FixJS
 
 " printing
 set printoptions+=header:0
@@ -731,13 +433,12 @@ let g:pymode_indent=1
 
 """"""""""Powerline""""""""""
 " These lines setup the environment to show graphics and colors correctly.
-set nocompatible
 set t_Co=256
 
 let g:minBufExplForceSyntaxEnable = 1
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 if ! has('gui_running')
   set ttimeoutlen=10
@@ -762,11 +463,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" Replace word under cursor "
-vnoremap <Leader>s "dy:%sno/<C-r>"/
+" Replace highlighted text "
+vnoremap <Leader>vr "dy:%sno/<C-r>"/
 
-" find word under cursor "
-vnoremap <Leader>f "dy:Ag -r <C-r>" .
+" find highlighted text "
+vnoremap <Leader>vf "dy:Ag -r <C-r>" .
 
 "-----------------------------------------------------------------------------
 " Tagbar Plugin Settings
