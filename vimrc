@@ -350,7 +350,7 @@ if has("gui_running")
   endif
 endif
 
-colorscheme zenburn
+colorscheme default
 
 :nohls
 
